@@ -104,7 +104,7 @@
         <div class="input-row">
             <label>Current Reviews (5 Stars):</label>
             <button class="decrement-button" data-target="reviews5">-</button>
-            <input type="number" id="reviews5" value="6">
+            <input type="number" id="reviews5" value="4">
             <button class="increment-button" data-target="reviews5">+</button>
         </div>
         <div class="input-row">
@@ -133,7 +133,7 @@
         </div>
 
         <!-- Display Current Google Score immediately after the input -->
-        <h3>Your Current Google Score: <span id="currentScore">4.1</span></h3>
+        <h3>Your Current Google Score: <span id="currentScore">3.6</span></h3>
 
         <!-- Input the Number of Reviews You Wish to Remove -->
         <h3 class="section-header">Input the Number of Reviews You Wish to Remove</h3>
@@ -144,9 +144,27 @@
             <button class="increment-button" data-target="remove5">+</button>
         </div>
         <div class="input-row">
+            <label>Remove 4 Star Reviews:</label>
+            <button class="decrement-button" data-target="remove4">-</button>
+            <input type="number" id="remove4" value="0">
+            <button class="increment-button" data-target="remove4">+</button>
+        </div>
+        <div class="input-row">
+            <label>Remove 3 Star Reviews:</label>
+            <button class="decrement-button" data-target="remove3">-</button>
+            <input type="number" id="remove3" value="0">
+            <button class="increment-button" data-target="remove3">+</button>
+        </div>
+        <div class="input-row">
+            <label>Remove 2 Star Reviews:</label>
+            <button class="decrement-button" data-target="remove2">-</button>
+            <input type="number" id="remove2" value="0">
+            <button class="increment-button" data-target="remove2">+</button>
+        </div>
+        <div class="input-row">
             <label>Remove 1 Star Reviews:</label>
             <button class="decrement-button" data-target="remove1">-</button>
-            <input type="number" id="remove1" value="1">
+            <input type="number" id="remove1" value="2">
             <button class="increment-button" data-target="remove1">+</button>
         </div>
 
@@ -173,7 +191,7 @@
         <div id="profitSection" class="hidden">
             <div class="input-row">
                 <label>YOUR FUTURE ANNUAL REVENUE ($):</label>
-                <input type="number" id="futureRevenue" value="5105" disabled>
+                <input type="number" id="futureRevenue" value="5105" readonly>
                 <div class="explanation-text">Your annual revenue based on your future Google Score *</div>
             </div>
             <div class="input-row">
@@ -223,12 +241,17 @@
                 const reviews2 = parseInt(document.getElementById('reviews2').value);
                 const reviews1 = parseInt(document.getElementById('reviews1').value);
 
-                const totalReviews = reviews5 + reviews4 + reviews3 + reviews2 + reviews1;
+                const remove5 = parseInt(document.getElementById('remove5').value);
+                const remove4 = parseInt(document.getElementById('remove4').value);
+                const remove3 = parseInt(document.getElementById('remove3').value);
+                const remove2 = parseInt(document.getElementById('remove2').value);
+                const remove1 = parseInt(document.getElementById('remove1').value);
 
-                // Adjusted formula to match the old version behavior
-                const weightedScore = ((reviews5 * 5) + (reviews4 * 4) + (reviews3 * 3) + (reviews2 * 2) + (reviews1 * 1)) / totalReviews;
+                const totalReviews = reviews5 + reviews4 + reviews3 + reviews2 + reviews1 - remove5 - remove4 - remove3 - remove2 - remove1;
 
-                document.getElementById('currentScore').innerText = weightedScore.toFixed(1);
+                const weightedScore = ((reviews5 * 5) + (reviews4 * 4) + (reviews3 * 3) + (reviews2 * 2) + (reviews1 * 1) - (remove5 * 5) - (remove4 * 4) - (remove3 * 3) - (remove2 * 2) - (remove1 * 1)) / totalReviews;
+
+                document.getElementById('afterRemovals').innerText = weightedScore.toFixed(1);
 
                 calculateRevenue();
                 calculateProfit();
