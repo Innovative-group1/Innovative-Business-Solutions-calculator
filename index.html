@@ -5,78 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Score Calculator</title>
     <style>
+        /* General Body and Calculator Container */
         body {
             font-family: Arial, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #000000; /* Black background for everything */
+            color: #ffffff; /* White text */
         }
+
         .calculator {
             width: 600px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #000000;
+            background-color: #000000; /* Black background for calculator */
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            border-color: #ece295;
+            border-color: #ece295; /* Border color */
         }
+
+        /* Section Titles and Headings */
         h2, h3 {
-            color: #ffffff;
+            color: #ffffff; /* White headings */
         }
-        input[type="number"] {
-            background-color: #ffffff;
-            border-color: #ece295;
-            color: #000000;
-            padding: 10px;
-            width: 100%;
-            border-radius: 4px;
+
+        /* Input Rows with Increment/Decrement Buttons */
+        .input-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
         }
+
         .input-row label {
-            color: #ffffff;
+            color: #ffffff; /* White text for labels */
+            flex: 1;
         }
+
+        input[type="number"] {
+            background-color: #ffffff; /* White background for input fields */
+            border-color: #ece295;     /* Light yellow border for input fields */
+            color: #000000;            /* Black text inside inputs */
+            padding: 10px;
+            width: 80px;
+            margin: 0 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* Increment/Decrement Buttons */
         .increment-button, .decrement-button {
-            background-color: #ffffff;
-            color: #ece295;
-            border: 1px solid #ece295;
+            background-color: #ffffff; /* White background for buttons */
+            color: #ece295;            /* Light yellow text */
+            border: 1px solid #ece295; /* Border color for buttons */
             padding: 5px 10px;
             cursor: pointer;
         }
+
+        /* Result Sections (Score, Revenue, Profit) */
         .result {
             font-size: 1.2em;
             font-weight: bold;
             margin-top: 20px;
             padding: 15px;
-            background-color: #000000;
-            border: 1px solid #ece295;
-            color: #ffffff;
+            border: 1px solid #ece295; /* Border color */
         }
+
+        .result-score {
+            background-color: #4caf50; /* Green background for score */
+            color: #ffffff;            /* White text for score */
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .result-profit {
+            background-color: #2196f3; /* Blue background for profit */
+            color: #ffffff;            /* White text for profit */
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
 <body>
     <div class="calculator">
         <h2>Google Score Calculator</h2>
+        
+        <!-- Review Input Section -->
         <div class="input-row">
             <label>Current Reviews (5 Stars):</label>
+            <button class="decrement-button">-</button>
             <input type="number" id="reviews5" value="10">
+            <button class="increment-button">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (4 Stars):</label>
+            <button class="decrement-button">-</button>
             <input type="number" id="reviews4" value="2">
+            <button class="increment-button">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (3 Stars):</label>
+            <button class="decrement-button">-</button>
             <input type="number" id="reviews3" value="0">
+            <button class="increment-button">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (2 Stars):</label>
+            <button class="decrement-button">-</button>
             <input type="number" id="reviews2" value="4">
+            <button class="increment-button">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (1 Star):</label>
+            <button class="decrement-button">-</button>
             <input type="number" id="reviews1" value="2">
+            <button class="increment-button">+</button>
         </div>
+
+        <!-- Current Google Score -->
         <h3>Your Current Google Score: <span id="currentScore">3.8</span></h3>
+
+        <!-- Score After Removal -->
         <div class="result result-score">
             Your Score After Removals: <span id="afterRemovals">0.0</span>
         </div>
+
+        <!-- Revenue and Profit Calculation -->
         <h3>Revenue and Profit</h3>
         <div class="input-row">
             <label>Current Annual Revenue ($):</label>
@@ -86,45 +138,72 @@
             <label>Profit Margin (%):</label>
             <input type="number" id="profitMargin" value="20">
         </div>
+
         <div class="result result-profit">
             Additional Annual Profit: <span id="additionalProfit">$0</span>
         </div>
     </div>
+
     <script>
+        // Increment/Decrement Buttons Logic
+        document.querySelectorAll('.increment-button').forEach(button => {
+            button.addEventListener('click', function() {
+                let input = this.previousElementSibling;
+                input.value = parseInt(input.value) + 1;
+            });
+        });
+
+        document.querySelectorAll('.decrement-button').forEach(button => {
+            button.addEventListener('click', function() {
+                let input = this.nextElementSibling;
+                if (parseInt(input.value) > 0) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+        });
+
         function calculateScore() {
             const reviews5 = parseInt(document.getElementById("reviews5").value);
             const reviews4 = parseInt(document.getElementById("reviews4").value);
             const reviews3 = parseInt(document.getElementById("reviews3").value);
             const reviews2 = parseInt(document.getElementById("reviews2").value);
             const reviews1 = parseInt(document.getElementById("reviews1").value);
-            const remove5 = parseInt(document.getElementById("remove5").value);
-            const remove4 = parseInt(document.getElementById("remove4").value);
-            const remove2 = parseInt(document.getElementById("remove2").value);
-            const remove1 = parseInt(document.getElementById("remove1").value);
-            const totalReviews = (reviews5 + reviews4 + reviews3 + reviews2 + reviews1) - 
-                                (remove5 + remove4 + remove2 + remove1);
-            const weightedScore = ((reviews5 - remove5) * 5) +
-                                  ((reviews4 - remove4) * 4) +
-                                  ((reviews3) * 3) + 
-                                  ((reviews2 - remove2) * 2) +
-                                  ((reviews1 - remove1) * 1);
+            
+            const totalReviews = reviews5 + reviews4 + reviews3 + reviews2 + reviews1;
+
+            const weightedScore = (reviews5 * 5) +
+                                  (reviews4 * 4) +
+                                  (reviews3 * 3) + 
+                                  (reviews2 * 2) +
+                                  (reviews1 * 1);
+
             const finalScore = weightedScore / totalReviews;
             document.getElementById("afterRemovals").innerText = finalScore.toFixed(1);
+
+            // Update Google Score
             document.getElementById("currentScore").innerText = ((weightedScore / totalReviews).toFixed(1));
         }
+
         function calculateProfit() {
             const currentRevenue = parseFloat(document.getElementById("currentRevenue").value);
             const profitMargin = parseFloat(document.getElementById("profitMargin").value) / 100;
-            const additionalRevenue = currentRevenue * 0.07; 
+            
+            // Simple assumption for increase in revenue based on future score improvement
+            const additionalRevenue = currentRevenue * 0.07; // 7% increase due to improved score
+            
             const additionalProfit = additionalRevenue * profitMargin;
             document.getElementById("additionalProfit").innerText = "$" + additionalProfit.toFixed(2);
         }
+
+        // Trigger calculation on input changes
         document.querySelectorAll("input").forEach(input => {
             input.addEventListener("input", () => {
                 calculateScore();
                 calculateProfit();
             });
         });
+
+        // Initial calculation
         calculateScore();
         calculateProfit();
     </script>
