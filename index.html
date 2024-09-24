@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
+            background-color: #000000; /* Black background for everything */
+            color: #ffffff; /* White text */
         }
 
         .calculator {
@@ -99,19 +99,19 @@
         <div class="input-row">
             <label>Current Reviews (5 Stars):</label>
             <button class="decrement-button" data-target="reviews5">-</button>
-            <input type="number" id="reviews5" value="5">
+            <input type="number" id="reviews5" value="10">
             <button class="increment-button" data-target="reviews5">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (4 Stars):</label>
             <button class="decrement-button" data-target="reviews4">-</button>
-            <input type="number" id="reviews4" value="2">
+            <input type="number" id="reviews4" value="5">
             <button class="increment-button" data-target="reviews4">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (3 Stars):</label>
             <button class="decrement-button" data-target="reviews3">-</button>
-            <input type="number" id="reviews3" value="0">
+            <input type="number" id="reviews3" value="1">
             <button class="increment-button" data-target="reviews3">+</button>
         </div>
         <div class="input-row">
@@ -143,10 +143,10 @@
         </div>
 
         <!-- Current and After Removal Scores -->
-        <h3>Your Current Google Score: <span id="currentScore">3.3</span></h3>
+        <h3>Your Current Google Score: <span id="currentScore">3.8</span></h3>
         <h3 class="section-header">Your Score After Removals</h3>
         <div class="result result-score">
-            Your Score After Removals: <span id="afterRemovals">3.7</span>
+            Your Score After Removals: <span id="afterRemovals">4.1</span>
         </div>
 
         <!-- Click to see how your Score affects REVENUE -->
@@ -156,7 +156,7 @@
             <input type="number" id="currentRevenue" value="5000">
         </div>
         <div class="result result-revenue">
-            Increase in Your Revenue: <span id="increasedRevenue">$140</span>
+            Increase in Your Revenue: <span id="increasedRevenue">$105</span>
             <div class="explanation-text">Based on your future Google Score *</div>
         </div>
 
@@ -164,7 +164,7 @@
         <h3 class="section-header">Click to see how your Score affects PROFIT</h3>
         <div class="input-row">
             <label>Your Future Annual Revenue ($):</label>
-            <input type="number" id="futureRevenue" value="5140" readonly>
+            <input type="number" id="futureRevenue" value="5105" readonly>
             <div class="explanation-text">Your annual revenue based on your future Google Score *</div>
         </div>
         <div class="input-row">
@@ -173,7 +173,7 @@
             <div class="explanation-text">Note that your profit margin on new additional sales is generally much higher than your overall profit margin as most of your costs stay fixed.</div>
         </div>
         <div class="result result-profit">
-            Additional Annual Profit: <span id="additionalProfit">$28</span>
+            Additional Annual Profit: <span id="additionalProfit">$21</span>
             <div class="explanation-text">Your Net Profit on Additional New Sales</div>
         </div>
     </div>
@@ -214,12 +214,12 @@
 
         function calculateProfit() {
             const currentRevenue = parseFloat(document.getElementById('currentRevenue').value);
-            const futureRevenue = currentRevenue + (currentRevenue * 0.028); // Example future increase based on score
+            const futureRevenue = currentRevenue + (currentRevenue * 0.021); // Example future increase based on score
             const profitMargin = parseFloat(document.getElementById('profitMargin').value) / 100;
             const additionalProfit = (futureRevenue - currentRevenue) * profitMargin;
 
             document.getElementById('futureRevenue').value = futureRevenue.toFixed(0);
-            document.getElementById('increasedRevenue').innerText = `$${(currentRevenue * 0.028).toFixed(2)}`;
+            document.getElementById('increasedRevenue').innerText = `$${(currentRevenue * 0.021).toFixed(2)}`;
             document.getElementById('additionalProfit').innerText = `$${additionalProfit.toFixed(2)}`;
         }
 
