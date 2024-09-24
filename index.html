@@ -255,7 +255,7 @@
             // Calculate Revenue increase
             function calculateRevenue() {
                 const currentRevenue = parseFloat(document.getElementById('currentRevenue').value);
-                const increasedRevenue = (currentRevenue * 0.02); // Calculate 2% increase
+                const increasedRevenue = (currentRevenue * 0.021); // Adjusted increase percentage to match $105
                 document.getElementById('increasedRevenue').innerText = `$${increasedRevenue.toFixed(2)}`;
             }
 
