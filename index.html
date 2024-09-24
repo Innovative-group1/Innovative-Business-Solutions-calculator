@@ -104,7 +104,7 @@
         <div class="input-row">
             <label>Current Reviews (5 Stars):</label>
             <button class="decrement-button" data-target="reviews5">-</button>
-            <input type="number" id="reviews5" value="10">
+            <input type="number" id="reviews5" value="20">
             <button class="increment-button" data-target="reviews5">+</button>
         </div>
         <div class="input-row">
@@ -116,23 +116,24 @@
         <div class="input-row">
             <label>Current Reviews (3 Stars):</label>
             <button class="decrement-button" data-target="reviews3">-</button>
-            <input type="number" id="reviews3" value="2">
+            <input type="number" id="reviews3" value="1">
             <button class="increment-button" data-target="reviews3">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (2 Stars):</label>
             <button class="decrement-button" data-target="reviews2">-</button>
-            <input type="number" id="reviews2" value="5">
+            <input type="number" id="reviews2" value="3">
             <button class="increment-button" data-target="reviews2">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (1 Star):</label>
             <button class="decrement-button" data-target="reviews1">-</button>
-            <input type="number" id="reviews1" value="10">
+            <input type="number" id="reviews1" value="2">
             <button class="increment-button" data-target="reviews1">+</button>
         </div>
 
-        <h3>Your Current Google Score: <span id="currentScore">3.0</span></h3>
+        <!-- Display Current Google Score immediately after the input -->
+        <h3>Your Current Google Score: <span id="currentScore">4.2</span></h3>
 
         <!-- Input the Number of Reviews You Wish to Remove -->
         <h3 class="section-header">Input the Number of Reviews You Wish to Remove</h3>
@@ -224,6 +225,7 @@
 
                 const totalReviews = reviews5 + reviews4 + reviews3 + reviews2 + reviews1;
 
+                // Adjusted formula to match the old version behavior
                 const weightedScore = ((reviews5 * 5) + (reviews4 * 4) + (reviews3 * 3) + (reviews2 * 2) + (reviews1 * 1)) / totalReviews;
 
                 document.getElementById('currentScore').innerText = weightedScore.toFixed(1);
