@@ -34,6 +34,8 @@
         .input-row label {
             flex: 1;
             font-weight: bold;
+            color: #ece295; /* Adjusting the color to match the image */
+            text-align: left; /* Aligning as per the request */
         }
 
         input[type="number"] {
@@ -97,138 +99,112 @@
     </style>
 </head>
 <body>
-
-<div class="calculator">
-    <h2>Google Score Calculator</h2>
-    
-    <!-- Input Your Current Number of Reviews -->
-    <h3>Input Your Current Number of Reviews</h3>
-    <div class="input-row">
-        <label>Current Reviews (5 Stars):</label>
-        <button class="decrement-button" onclick="decrement('current-5-stars')">-</button>
-        <input type="number" id="current-5-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('current-5-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Current Reviews (4 Stars):</label>
-        <button class="decrement-button" onclick="decrement('current-4-stars')">-</button>
-        <input type="number" id="current-4-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('current-4-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Current Reviews (3 Stars):</label>
-        <button class="decrement-button" onclick="decrement('current-3-stars')">-</button>
-        <input type="number" id="current-3-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('current-3-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Current Reviews (2 Stars):</label>
-        <button class="decrement-button" onclick="decrement('current-2-stars')">-</button>
-        <input type="number" id="current-2-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('current-2-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Current Reviews (1 Star):</label>
-        <button class="decrement-button" onclick="decrement('current-1-star')">-</button>
-        <input type="number" id="current-1-star" value="0" min="0">
-        <button class="increment-button" onclick="increment('current-1-star')">+</button>
-    </div>
-    
-    <div class="result result-score" id="current-google-score">Your Current Google Score: 0.0</div>
-    
-    <!-- Input the Number of Reviews You Wish to Remove -->
-    <h3>Input the Number of Reviews You Wish to Remove</h3>
-    <div class="input-row">
-        <label>Remove 5 Star Reviews:</label>
-        <button class="decrement-button" onclick="decrement('remove-5-stars')">-</button>
-        <input type="number" id="remove-5-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('remove-5-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Remove 4 Star Reviews:</label>
-        <button class="decrement-button" onclick="decrement('remove-4-stars')">-</button>
-        <input type="number" id="remove-4-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('remove-4-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Remove 3 Star Reviews:</label>
-        <button class="decrement-button" onclick="decrement('remove-3-stars')">-</button>
-        <input type="number" id="remove-3-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('remove-3-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Remove 2 Star Reviews:</label>
-        <button class="decrement-button" onclick="decrement('remove-2-stars')">-</button>
-        <input type="number" id="remove-2-stars" value="0" min="0">
-        <button class="increment-button" onclick="increment('remove-2-stars')">+</button>
-    </div>
-    <div class="input-row">
-        <label>Remove 1 Star Reviews:</label>
-        <button class="decrement-button" onclick="decrement('remove-1-star')">-</button>
-        <input type="number" id="remove-1-star" value="0" min="0">
-        <button class="increment-button" onclick="increment('remove-1-star')">+</button>
-    </div>
-    
-    <div class="result result-score" id="score-after-removals">Your Score After Removals: 0.0</div>
-    
-    <!-- Toggle Sections -->
-    <h3 class="section-header" onclick="toggleSection('revenue-section')">Click to see how your Score affects REVENUE ▼</h3>
-    <div id="revenue-section" class="hidden">
-        <div class="input-row">
-            <label>Input Your Current Annual Revenue ($):</label>
-            <input type="number" id="current-revenue" value="0" min="0">
-        </div>
-        <div class="result result-revenue" id="increase-in-revenue">Increase in Your Revenue: $0.00</div>
-    </div>
-
-    <h3 class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</h3>
-    <div id="profit-section" class="hidden">
-        <div class="input-row">
-            <label>YOUR FUTURE ANNUAL REVENUE ($):</label>
-            <input type="number" id="future-revenue" value="0" min="0">
-        </div>
-        <div class="input-row">
-            <label>Input Your Profit Margin on Extra Sales (%):</label>
-            <input type="number" id="profit-margin" value="0" min="0">
-        </div>
-        <div class="result result-profit" id="additional-annual-profit">Additional Annual Profit: $0.00</div>
-    </div>
-</div>
-
-<script>
-    function increment(id) {
-        let input = document.getElementById(id);
-        input.value = parseInt(input.value) + 1;
-        calculateScore();
-    }
-
-    function decrement(id) {
-        let input = document.getElementById(id);
-        if (input.value > 0) {
-            input.value = parseInt(input.value) - 1;
-            calculateScore();
-        }
-    }
-
-    function calculateScore() {
-        // Logic to calculate Google Score and the revenue/profit based on input values
-        let current5Stars = parseInt(document.getElementById('current-5-stars').value);
-        let current4Stars = parseInt(document.getElementById('current-4-stars').value);
-        let current3Stars = parseInt(document.getElementById('current-3-stars').value);
-        let current2Stars = parseInt(document.getElementById('current-2-stars').value);
-        let current1Star = parseInt(document.getElementById('current-1-star').value);
+    <div class="calculator">
+        <h2>Google Score Calculator</h2>
         
-        let totalReviews = current5Stars + current4Stars + current3Stars + current2Stars + current1Star;
-        let totalScore = (current5Stars * 5 + current4Stars * 4 + current3Stars * 3 + current2Stars * 2 + current1Star * 1) / totalReviews;
+        <!-- Input Your Current Number of Reviews Section -->
+        <div class="input-row">
+            <label for="current-reviews-5-star">Current Reviews (5 Stars):</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="current-reviews-5-star" value="1">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="current-reviews-4-star">Current Reviews (4 Stars):</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="current-reviews-4-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="current-reviews-3-star">Current Reviews (3 Stars):</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="current-reviews-3-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="current-reviews-2-star">Current Reviews (2 Stars):</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="current-reviews-2-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="current-reviews-1-star">Current Reviews (1 Star):</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="current-reviews-1-star" value="1">
+            <button class="increment-button">+</button>
+        </div>
 
-        document.getElementById('current-google-score').innerText = `Your Current Google Score: ${totalScore.toFixed(1)}`;
-    }
+        <!-- Your Current Google Score -->
+        <h3>Your Current Google Score: <input type="text" value="3.0" readonly></h3>
 
-    function toggleSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        section.classList.toggle('hidden');
-    }
-</script>
+        <!-- Input the Number of Reviews You Wish to Remove Section -->
+        <div class="input-row">
+            <label for="remove-5-star">Remove 5 Star Reviews:</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="remove-5-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="remove-4-star">Remove 4 Star Reviews:</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="remove-4-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="remove-3-star">Remove 3 Star Reviews:</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="remove-3-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="remove-2-star">Remove 2 Star Reviews:</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="remove-2-star" value="0">
+            <button class="increment-button">+</button>
+        </div>
+        <div class="input-row">
+            <label for="remove-1-star">Remove 1 Star Reviews:</label>
+            <button class="decrement-button">-</button>
+            <input type="number" id="remove-1-star" value="9">
+            <button class="increment-button">+</button>
+        </div>
 
+        <!-- Your Score After Removals -->
+        <div class="result result-score">Your Score After Removals: 3.4</div>
+
+        <!-- Revenue and Profit Sections -->
+        <div class="section-header" onclick="toggleSection('revenue-section')">Click to see how your Score affects REVENUE ▼</div>
+        <div id="revenue-section" class="hidden">
+            <div class="input-row">
+                <label for="current-revenue">Input Your Current Annual Revenue ($):</label>
+                <input type="number" id="current-revenue" value="5000">
+            </div>
+            <div class="result result-revenue">Increase in Your Revenue: $140.00 <span class="explanation-text">Based on your future Google Score *</span></div>
+        </div>
+
+        <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
+        <div id="profit-section" class="hidden">
+            <div class="input-row">
+                <label for="future-revenue">YOUR FUTURE ANNUAL REVENUE ($):</label>
+                <input type="number" id="future-revenue" value="5140">
+            </div>
+            <div class="input-row">
+                <label for="profit-margin">Input Your Profit Margin on Extra Sales (%):</label>
+                <input type="number" id="profit-margin" value="20">
+            </div>
+            <div class="result result-profit">Additional Annual Profit: $28.00 <span class="explanation-text">Your Net Profit on Additional New Sales</span></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section.classList.contains('hidden')) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
