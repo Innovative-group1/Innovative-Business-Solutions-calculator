@@ -38,7 +38,7 @@
         input[type="number"] {
             background-color: #ffffff;
             border-color: #ece295;
-            color: #000000;
+            color: #000000; /* Updated to black text */
             padding: 10px;
             width: 80px;
             margin-left: 10px;
@@ -48,7 +48,7 @@
 
         .increment-button, .decrement-button {
             background-color: #ffffff;
-            color: #ece295;
+            color: #000000; /* Updated to black text for visibility */
             border: none;
             padding: 5px 10px;
             cursor: pointer;
@@ -249,12 +249,25 @@
                 document.getElementById('afterRemovals').innerText = remainingTotalReviews > 0 ? remainingWeightedScore.toFixed(1) : '0';
             }
 
-            // Call calculateScore on load to ensure proper setup
-            document.querySelectorAll('input').forEach(input => {
-                input.addEventListener('input', calculateScore);
+            document.querySelectorAll('.increment-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = document.getElementById(button.getAttribute('data-target'));
+                    target.value = parseInt(target.value) + 1;
+                    calculateScore();
+                });
             });
 
-            calculateScore();  // Initial call to setup the calculation
+            document.querySelectorAll('.decrement-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = document.getElementById(button.getAttribute('data-target'));
+                    if (parseInt(target.value) > 0) {
+                        target.value = parseInt(target.value) - 1;
+                        calculateScore();
+                    }
+                });
+            });
+
+            calculateScore(); // Initial call
         </script>
     </div>
 </body>
