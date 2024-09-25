@@ -86,7 +86,7 @@
 
         <div class="section">
             <label for="current-google-score">Your Current Google Score:</label>
-            <input type="number" id="current-google-score" value="3.0" readonly>
+            <input type="number" id="current-google-score" value="NaN" readonly>
         </div>
 
         <div class="section">
@@ -109,21 +109,21 @@
             </div>
             <div>
                 <label>Remove 1 Star Reviews:</label>
-                <input type="number" id="remove-1-star-reviews" value="9" min="0">
+                <input type="number" id="remove-1-star-reviews" value="0" min="0">
             </div>
         </div>
 
         <div class="result" id="score-after-removals">
-            Your Score After Removals: 3.4
+            Your Score After Removals: 0.0
         </div>
 
         <div class="toggle-section">
             <button onclick="toggleSection('revenue-section')">Click to see how your Score affects REVENUE ▼</button>
             <div id="revenue-section" class="section">
                 <label for="annual-revenue">Input Your Current Annual Revenue ($):</label>
-                <input type="number" id="annual-revenue" value="5000">
+                <input type="number" id="annual-revenue" value="0">
                 <div class="blue-section">
-                    Increase in Your Revenue: $140.00 <br>
+                    Increase in Your Revenue: $0.00 <br>
                     Based on your future Google Score *
                 </div>
             </div>
@@ -133,11 +133,11 @@
             <button onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</button>
             <div id="profit-section" class="section">
                 <label for="future-annual-revenue">YOUR FUTURE ANNUAL REVENUE ($):</label>
-                <input type="number" id="future-annual-revenue" value="5140" readonly>
+                <input type="number" id="future-annual-revenue" value="0" readonly>
                 <label for="profit-margin">Input Your Profit Margin on Extra Sales (%):</label>
-                <input type="number" id="profit-margin" value="20">
+                <input type="number" id="profit-margin" value="0">
                 <div class="blue-section">
-                    Additional Annual Profit: $28.00 <br>
+                    Additional Annual Profit: $0.00 <br>
                     Your Net Profit on Additional New Sales
                 </div>
             </div>
