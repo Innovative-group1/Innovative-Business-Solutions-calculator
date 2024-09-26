@@ -122,6 +122,11 @@
         .input-row input[type="number"] {
             width: 80px;
         }
+
+        .input-row label,
+        .input-row input[type="number"] {
+            flex: 1;
+        }
     </style>
 </head>
 
@@ -140,13 +145,13 @@
         <div class="input-row">
             <label>Current Reviews (4 Stars):</label>
             <button class="decrement-button" data-target="reviews4">-</button>
-            <input type="number" id="reviews4" value="2">
+            <input type="number" id="reviews4" value="0">
             <button class="increment-button" data-target="reviews4">+</button>
         </div>
         <div class="input-row">
             <label>Current Reviews (3 Stars):</label>
             <button class="decrement-button" data-target="reviews3">-</button>
-            <input type="number" id="reviews3" value="1">
+            <input type="number" id="reviews3" value="2">
             <button class="increment-button" data-target="reviews3">+</button>
         </div>
         <div class="input-row">
@@ -158,12 +163,12 @@
         <div class="input-row">
             <label>Current Reviews (1 Star):</label>
             <button class="decrement-button" data-target="reviews1">-</button>
-            <input type="number" id="reviews1" value="5">
+            <input type="number" id="reviews1" value="1">
             <button class="increment-button" data-target="reviews1">+</button>
         </div>
 
         <!-- Display Current Google Score -->
-        <h3>Your Current Google Score: <span id="currentScore">3.0</span></h3>
+        <h3>Your Current Google Score: <span id="currentScore">3.6</span></h3>
 
         <!-- Input the Number of Reviews You Wish to Remove -->
         <h3 class="section-header">Input the Number of Reviews You Wish to Remove</h3>
@@ -188,19 +193,19 @@
         <div class="input-row">
             <label>Remove 2 Star Reviews:</label>
             <button class="decrement-button" data-target="remove2">-</button>
-            <input type="number" id="remove2" value="0">
+            <input type="number" id="remove2" value="1">
             <button class="increment-button" data-target="remove2">+</button>
         </div>
         <div class="input-row">
             <label>Remove 1 Star Reviews:</label>
             <button class="decrement-button" data-target="remove1">-</button>
-            <input type="number" id="remove1" value="4">
+            <input type="number" id="remove1" value="1">
             <button class="increment-button" data-target="remove1">+</button>
         </div>
 
         <!-- Score After Removals Section -->
         <div class="result result-score">
-            Your Score After Removals: <span id="afterRemovals">3.7</span>
+            Your Score After Removals: <span id="afterRemovals">4.1</span>
         </div>
 
         <!-- Toggle Section for Revenue -->
@@ -211,7 +216,7 @@
                 <input type="number" id="annualRevenue" value="5000">
             </div>
             <div class="result-revenue">
-                Increase in Your Revenue: $<span id="revenueIncrease">140.00</span> <br>
+                Increase in Your Revenue: $<span id="revenueIncrease">175.00</span> <br>
                 Based on your future Google Score *
             </div>
         </div>
@@ -221,15 +226,15 @@
         <div id="profit-section" class="hidden">
             <div class="input-row">
                 <label>Your Future Annual Revenue ($):</label>
-                <input type="number" id="futureRevenue" readonly>
+                <input type="number" id="futureRevenue" value="5175.00" readonly> <!-- Aligned input field -->
             </div>
-            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Text remains below input field -->
+            <p class="small-text">Your annual revenue based on your future Google Score *</p>
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
-                <input type="number" id="profitMargin" value="20">
+                <input type="number" id="profitMargin" value="30">
             </div>
             <div class="result-profit">
-                Additional Annual Profit: $<span id="profitIncrease">28.00</span> <br>
+                Additional Annual Profit: $<span id="profitIncrease">52.50</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
