@@ -111,21 +111,18 @@
             line-height: 1.1;
         }
 
-        /* Keep input fields in original position */
-        .input-container {
+        /* Fix alignment for specific input fields */
+        .aligned-input-row {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        .input-row input[type="number"] {
-            width: 80px;
-        }
-
-        .input-row label,
-        .input-row input[type="number"] {
-            flex: 1;
+        .aligned-input-row input {
+            width: 120px; /* Ensure inputs have the same width */
+            margin-left: 10px;
+            padding: 10px;
         }
     </style>
 </head>
@@ -211,7 +208,7 @@
         <!-- Toggle Section for Revenue -->
         <div class="section-header" onclick="toggleSection('revenue-section')">Click to see how your Score affects REVENUE ▼</div>
         <div id="revenue-section" class="hidden">
-            <div class="input-row">
+            <div class="aligned-input-row">
                 <label>Input Your Current Annual Revenue ($):</label>
                 <input type="number" id="annualRevenue" value="5000">
             </div>
@@ -224,12 +221,12 @@
         <!-- Toggle Section for Profit -->
         <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
         <div id="profit-section" class="hidden">
-            <div class="input-row">
+            <div class="aligned-input-row">
                 <label>Your Future Annual Revenue ($):</label>
-                <input type="number" id="futureRevenue" value="5175.00" readonly> <!-- Aligned input field -->
+                <input type="number" id="futureRevenue" readonly>
             </div>
             <p class="small-text">Your annual revenue based on your future Google Score *</p>
-            <div class="input-row">
+            <div class="aligned-input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="30">
             </div>
