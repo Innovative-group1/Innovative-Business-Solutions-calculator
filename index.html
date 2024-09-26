@@ -100,10 +100,8 @@
         }
 
         .small-text {
-            font-size: 0.8em;
-            color: #ffffff;
-            margin-top: 5px;
-            text-align: center;
+            font-size: 0.5em; /* Half the regular font size */
+            color: #cccccc;
         }
     </style>
 </head>
@@ -206,10 +204,8 @@
                 <label>Your Future Annual Revenue ($):</label>
                 <!-- Make this field readonly, automatically updated -->
                 <input type="number" id="futureRevenue" readonly>
+                <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Text added with smaller font size -->
             </div>
-            <!-- Small text below Future Annual Revenue -->
-            <div class="small-text">Your annual revenue based on your future Google Score *</div>
-
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="30">
