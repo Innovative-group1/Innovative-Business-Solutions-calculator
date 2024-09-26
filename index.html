@@ -283,7 +283,7 @@
                 const currentRevenue = parseFloat(document.getElementById('annualRevenue').value);
                 const scoreDifference = newScore - oldScore;
 
-                // Use the provided formula: Increase in Revenue = Annual Revenue * (Score Change * 7%)
+                // Ensure no intermediate rounding and calculate with precision
                 const revenueIncrease = currentRevenue * (scoreDifference * 0.07);
 
                 document.getElementById('revenueIncrease').innerText = revenueIncrease.toFixed(2);
