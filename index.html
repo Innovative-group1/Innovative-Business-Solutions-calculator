@@ -93,6 +93,10 @@
         .result-revenue, .result-profit {
             background-color: #2196f3;
             color: #ffffff;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -135,7 +139,7 @@
         </div>
 
         <!-- Display Current Google Score -->
-        <h3>Your Current Google Score: <span id="currentScore">3.0</span></h3>
+        <h3>Your Current Google Score: <span id="currentScore">3.3</span></h3>
 
         <!-- Input the Number of Reviews You Wish to Remove -->
         <h3 class="section-header">Input the Number of Reviews You Wish to Remove</h3>
@@ -172,44 +176,70 @@
 
         <!-- Score After Removals Section -->
         <div class="result result-score">
-            Your Score After Removals: <span id="afterRemovals">3.7</span>
+            Your Score After Removals: <span id="afterRemovals">3.3</span>
         </div>
 
-        <!-- Revenue and Profit Section -->
-        <h3 class="section-header" onclick="toggleSection('revenueSection')">Click to see how your Score affects REVENUE ▼</h3>
-        <div id="revenueSection" class="hidden">
+        <!-- Toggle Section for Revenue -->
+        <div class="section-header" onclick="toggleSection('revenue-section')">Click to see how your Score affects REVENUE ▼</div>
+        <div id="revenue-section" class="hidden">
             <div class="input-row">
                 <label>Input Your Current Annual Revenue ($):</label>
-                <input type="number" id="currentRevenue" value="5000" onchange="calculateRevenueAndProfit()">
+                <input type="number" id="annualRevenue" value="0">
             </div>
-            <div class="result result-revenue">
-                Increase in Your Revenue: <span id="revenueIncrease">$140.00</span> <br>
+            <div class="result-revenue">
+                Increase in Your Revenue: $<span id="revenueIncrease">140.00</span> <br>
                 Based on your future Google Score *
             </div>
         </div>
 
-        <h3 class="section-header" onclick="toggleSection('profitSection')">Click to see how your Score affects PROFIT ▼</h3>
-        <div id="profitSection" class="hidden">
+        <!-- Toggle Section for Profit -->
+        <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
+        <div id="profit-section" class="hidden">
             <div class="input-row">
                 <label>Your Future Annual Revenue ($):</label>
-                <input type="number" id="futureRevenue" readonly>
+                <input type="number" id="futureRevenue" value="5140">
             </div>
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
-                <input type="number" id="profitMargin" value="20" onchange="calculateRevenueAndProfit()">
+                <input type="number" id="profitMargin" value="20">
             </div>
-            <div class="result result-profit">
-                Additional Annual Profit: <span id="annualProfit">$28.00</span> <br>
+            <div class="result-profit">
+                Additional Annual Profit: $<span id="profitIncrease">28.00</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
 
         <script>
+            // Toggle Section Function
             function toggleSection(id) {
                 const section = document.getElementById(id);
-                section.classList.toggle('hidden');
+                if (section.classList.contains('hidden')) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
             }
 
+            // Increment and Decrement Buttons for Reviews
+            document.querySelectorAll('.increment-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = document.getElementById(button.getAttribute('data-target'));
+                    target.value = parseInt(target.value) + 1;
+                    calculateScores();
+                });
+            });
+
+            document.querySelectorAll('.decrement-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = document.getElementById(button.getAttribute('data-target'));
+                    if (parseInt(target.value) > 0) {
+                        target.value = parseInt(target.value) - 1;
+                        calculateScores();
+                    }
+                });
+            });
+
+            // Score Calculation Function
             function calculateScores() {
                 const reviews5 = parseInt(document.getElementById('reviews5').value);
                 const reviews4 = parseInt(document.getElementById('reviews4').value);
@@ -238,24 +268,6 @@
                 const newWeightedScore = (remainingReviews5 * 5 + remainingReviews4 * 4 + remainingReviews3 * 3 + remainingReviews2 * 2 + remainingReviews1) / remainingTotalReviews;
 
                 document.getElementById('afterRemovals').innerText = newWeightedScore.toFixed(1);
-                calculateRevenueAndProfit();
-            }
-
-            function calculateRevenueAndProfit() {
-                const currentRevenue = parseInt(document.getElementById('currentRevenue').value);
-                const scoreAfterRemovals = parseFloat(document.getElementById('afterRemovals').innerText);
-                const scoreBeforeRemovals = parseFloat(document.getElementById('currentScore').innerText);
-
-                // Assume a $35 increase in revenue per 0.1 increase in Google score
-                const revenueIncrease = ((scoreAfterRemovals - scoreBeforeRemovals) * 350).toFixed(2);
-                document.getElementById('revenueIncrease').innerText = `$${revenueIncrease}`;
-
-                const futureRevenue = (currentRevenue + parseFloat(revenueIncrease)).toFixed(2);
-                document.getElementById('futureRevenue').value = futureRevenue;
-
-                const profitMargin = parseInt(document.getElementById('profitMargin').value) / 100;
-                const annualProfit = (revenueIncrease * profitMargin).toFixed(2);
-                document.getElementById('annualProfit').innerText = `$${annualProfit}`;
             }
 
             calculateScores();
