@@ -125,9 +125,10 @@
             padding: 10px;
         }
 
-        /* Ensure proper spacing between input and text */
+        /* Adjust spacing between the input and the small text */
         .small-text {
-            margin-top: -10px;
+            margin-top: -8px; /* Reduced this to maintain the original spacing */
+            margin-bottom: 15px; /* Added margin to match the original spacing between the small text and next input */
         }
     </style>
 </head>
@@ -233,10 +234,10 @@
             <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Adjusted placement -->
             <div class="aligned-input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
-                <input type="number" id="profitMargin" value="20">
+                <input type="number" id="profitMargin" value="31">
             </div>
             <div class="result-profit">
-                Additional Annual Profit: $<span id="profitIncrease">19.60</span> <br>
+                Additional Annual Profit: $<span id="profitIncrease">30.38</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
