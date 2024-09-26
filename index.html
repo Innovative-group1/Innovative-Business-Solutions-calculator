@@ -277,12 +277,11 @@
             function calculateRevenueIncrease(oldScore, newScore) {
                 const currentRevenue = parseFloat(document.getElementById('annualRevenue').value);
                 const scoreDifference = newScore - oldScore;
-                const scalingFactor = 10;  // Assume this scaling factor can be adjusted
 
-                if (currentRevenue > 0) {
-                    const revenueIncrease = currentRevenue * (scoreDifference / scalingFactor);
-                    document.getElementById('revenueIncrease').innerText = revenueIncrease.toFixed(2);
-                }
+                // Use the provided formula: Increase in Revenue = Annual Revenue * (Score Change * 7%)
+                const revenueIncrease = currentRevenue * (scoreDifference * 0.07);
+
+                document.getElementById('revenueIncrease').innerText = revenueIncrease.toFixed(2);
 
                 // Calculate Additional Profit if the profit section is visible
                 const futureRevenue = currentRevenue + revenueIncrease;
