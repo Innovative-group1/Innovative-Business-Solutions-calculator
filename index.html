@@ -201,13 +201,12 @@
 
         <!-- Toggle Section for Profit -->
         <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
-        <h3>Your Future Annual Revenue ($):</h3> <!-- Heading -->
-        <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Now placed correctly beneath the heading -->
         <div id="profit-section" class="hidden">
             <div class="input-row">
                 <label>Your Future Annual Revenue ($):</label>
                 <input type="number" id="futureRevenue" readonly>
             </div>
+            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Now inside the toggle section and styled correctly -->
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="30">
