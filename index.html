@@ -239,6 +239,11 @@
                 });
             });
 
+            // Listen for changes in Annual Revenue to trigger recalculation
+            document.getElementById('annualRevenue').addEventListener('input', function () {
+                calculateRevenueIncrease(parseFloat(document.getElementById('currentScore').innerText), parseFloat(document.getElementById('afterRemovals').innerText));
+            });
+
             // Score Calculation Function
             function calculateScores() {
                 const reviews5 = parseInt(document.getElementById('reviews5').value);
