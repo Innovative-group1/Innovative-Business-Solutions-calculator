@@ -202,10 +202,10 @@
             </div>
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
-                <input type="number" id="profitMargin" value="20">
+                <input type="number" id="profitMargin" value="30">
             </div>
             <div class="result-profit">
-                Additional Annual Profit: $<span id="profitIncrease">28.00</span> <br>
+                Additional Annual Profit: $<span id="profitIncrease">35.00</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
@@ -300,6 +300,8 @@
             function calculateProfit() {
                 const profitMargin = parseFloat(document.getElementById('profitMargin').value) / 100;
                 const revenueIncrease = parseFloat(document.getElementById('revenueIncrease').innerText);
+
+                // Correct calculation for Additional Annual Profit
                 const additionalProfit = revenueIncrease * profitMargin;
 
                 document.getElementById('profitIncrease').innerText = additionalProfit.toFixed(2);
