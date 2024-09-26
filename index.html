@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +50,7 @@
 
         .increment-button, .decrement-button {
             background-color: #ffffff;
-            color: #000000; /* Set text color to black */
+            color: #000000;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
@@ -87,6 +88,15 @@
         .explanation-text {
             font-size: 0.9em;
             color: #cccccc;
+        }
+
+        .result-revenue, .result-profit {
+            background-color: #2196f3;
+            color: #ffffff;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -169,7 +179,48 @@
             Your Score After Removals: <span id="afterRemovals">3.3</span>
         </div>
 
+        <!-- Toggle Section for Revenue -->
+        <div class="section-header" onclick="toggleSection('revenue-section')">Click to see how your Score affects REVENUE ▼</div>
+        <div id="revenue-section" class="hidden">
+            <div class="input-row">
+                <label>Input Your Current Annual Revenue ($):</label>
+                <input type="number" id="annualRevenue" value="0">
+            </div>
+            <div class="result-revenue">
+                Increase in Your Revenue: $<span id="revenueIncrease">140.00</span> <br>
+                Based on your future Google Score *
+            </div>
+        </div>
+
+        <!-- Toggle Section for Profit -->
+        <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
+        <div id="profit-section" class="hidden">
+            <div class="input-row">
+                <label>Your Future Annual Revenue ($):</label>
+                <input type="number" id="futureRevenue" value="5140">
+            </div>
+            <div class="input-row">
+                <label>Input Your Profit Margin on Extra Sales (%):</label>
+                <input type="number" id="profitMargin" value="20">
+            </div>
+            <div class="result-profit">
+                Additional Annual Profit: $<span id="profitIncrease">28.00</span> <br>
+                Your Net Profit on Additional New Sales
+            </div>
+        </div>
+
         <script>
+            // Toggle Section Function
+            function toggleSection(id) {
+                const section = document.getElementById(id);
+                if (section.classList.contains('hidden')) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            }
+
+            // Increment and Decrement Buttons for Reviews
             document.querySelectorAll('.increment-button').forEach(button => {
                 button.addEventListener('click', () => {
                     const target = document.getElementById(button.getAttribute('data-target'));
@@ -188,6 +239,7 @@
                 });
             });
 
+            // Score Calculation Function
             function calculateScores() {
                 const reviews5 = parseInt(document.getElementById('reviews5').value);
                 const reviews4 = parseInt(document.getElementById('reviews4').value);
