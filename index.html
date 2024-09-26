@@ -116,13 +116,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .aligned-input-row input {
             width: 100px; /* Adjusting width to match the screenshot */
             margin-left: 10px;
             padding: 10px;
+        }
+
+        /* Ensure proper spacing between input and text */
+        .small-text {
+            margin-top: -10px;
         }
     </style>
 </head>
@@ -210,10 +215,10 @@
         <div id="revenue-section" class="hidden">
             <div class="aligned-input-row">
                 <label>Input Your Current Annual Revenue ($):</label>
-                <input type="number" id="annualRevenue" value="5000">
+                <input type="number" id="annualRevenue" value="2000">
             </div>
             <div class="result-revenue">
-                Increase in Your Revenue: $<span id="revenueIncrease">254.55</span> <br>
+                Increase in Your Revenue: $<span id="revenueIncrease">98.00</span> <br>
                 Based on your future Google Score *
             </div>
         </div>
@@ -223,7 +228,7 @@
         <div id="profit-section" class="hidden">
             <div class="aligned-input-row">
                 <label>Your Future Annual Revenue ($):</label>
-                <input type="number" id="futureRevenue" value="5254.55" readonly> <!-- Adjusted input field -->
+                <input type="number" id="futureRevenue" value="2098.00" readonly> <!-- Adjusted input field -->
             </div>
             <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Adjusted placement -->
             <div class="aligned-input-row">
@@ -231,7 +236,7 @@
                 <input type="number" id="profitMargin" value="20">
             </div>
             <div class="result-profit">
-                Additional Annual Profit: $<span id="profitIncrease">50.91</span> <br>
+                Additional Annual Profit: $<span id="profitIncrease">19.60</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
