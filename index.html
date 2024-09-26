@@ -245,6 +245,11 @@
                 calculateRevenueIncrease(parseFloat(document.getElementById('currentScore').innerText), parseFloat(document.getElementById('afterRemovals').innerText));
             });
 
+            // Listen for changes in Profit Margin to recalculate profit
+            document.getElementById('profitMargin').addEventListener('input', function () {
+                calculateProfit(); // Recalculate profit when margin changes
+            });
+
             // Score Calculation Function
             function calculateScores() {
                 const reviews5 = parseInt(document.getElementById('reviews5').value);
