@@ -99,16 +99,13 @@
             text-align: center;
         }
 
-        /* Updated small-text styling */
+        /* Small-text styling */
         .small-text {
             font-size: 0.8em;
             color: #cccccc;
             font-style: italic;
-            margin-top: 0;
-            margin-bottom: 5px;
-            padding-top: 0;
-            padding-bottom: 0;
-            line-height: 1.1;
+            margin-top: 5px;
+            margin-bottom: 15px; /* Adjusted margin for proper spacing */
         }
 
         /* Alignment and sizing adjustments */
@@ -125,10 +122,6 @@
             padding: 10px;
         }
 
-        /* Adjust margin for the future Google score section */
-        .future-revenue-margin {
-            margin-bottom: 12px; /* Adjusted for spacing */
-        }
     </style>
 </head>
 
@@ -226,11 +219,11 @@
         <!-- Toggle Section for Profit -->
         <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
         <div id="profit-section" class="hidden">
-            <div class="aligned-input-row future-revenue-margin">
+            <div class="aligned-input-row">
                 <label>Your Future Annual Revenue ($):</label>
                 <input type="number" id="futureRevenue" value="2101.82" readonly> <!-- Adjusted input field -->
             </div>
-            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Adjusted placement -->
+            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Placed directly under the input field -->
             <div class="aligned-input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="20">
