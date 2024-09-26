@@ -99,9 +99,11 @@
             text-align: center;
         }
 
+        /* Updated small-text styling */
         .small-text {
-            font-size: 0.5em; /* Half the regular font size */
+            font-size: 0.8em; /* Slightly larger font */
             color: #cccccc;
+            font-style: italic; /* Italicized */
         }
     </style>
 </head>
@@ -200,11 +202,12 @@
         <!-- Toggle Section for Profit -->
         <div class="section-header" onclick="toggleSection('profit-section')">Click to see how your Score affects PROFIT ▼</div>
         <div id="profit-section" class="hidden">
+            <h3>Your Future Annual Revenue ($):</h3> <!-- Keep this as the header -->
+            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Text added under the header with increased font size and italic -->
             <div class="input-row">
                 <label>Your Future Annual Revenue ($):</label>
                 <input type="number" id="futureRevenue" readonly>
             </div>
-            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Text added under the header -->
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="30">
