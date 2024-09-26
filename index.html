@@ -104,8 +104,9 @@
             font-size: 0.8em;
             color: #cccccc;
             font-style: italic;
-            margin-top: 5px;
-            margin-bottom: 15px; /* Adjusted margin for proper spacing */
+            margin-top: 0px;
+            margin-bottom: 10px;
+            line-height: 1.1;
         }
 
         /* Alignment and sizing adjustments */
@@ -113,7 +114,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .aligned-input-row input {
@@ -221,9 +222,9 @@
         <div id="profit-section" class="hidden">
             <div class="aligned-input-row">
                 <label>Your Future Annual Revenue ($):</label>
-                <input type="number" id="futureRevenue" value="2101.82" readonly> <!-- Adjusted input field -->
+                <input type="number" id="futureRevenue" value="2101.82" readonly>
             </div>
-            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Placed directly under the input field -->
+            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Now directly below the input -->
             <div class="aligned-input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="20">
