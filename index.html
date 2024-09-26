@@ -104,6 +104,9 @@
             font-size: 0.8em; /* Slightly larger font */
             color: #cccccc;
             font-style: italic; /* Italicized */
+            margin-top: 5px;  /* Reduce the space above the text */
+            margin-bottom: 0; /* No extra space below */
+            line-height: 1.2; /* Make the text more compact */
         }
     </style>
 </head>
@@ -194,7 +197,7 @@
                 <input type="number" id="annualRevenue" value="5000">
             </div>
             <div class="result-revenue">
-                Increase in Your Revenue: $<span id="revenueIncrease">175.00</span> <br>
+                Increase in Your Revenue: $<span id="revenueIncrease">183.75</span> <br>
                 Based on your future Google Score *
             </div>
         </div>
@@ -206,13 +209,13 @@
                 <label>Your Future Annual Revenue ($):</label>
                 <input type="number" id="futureRevenue" readonly>
             </div>
-            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Now inside the toggle section and styled correctly -->
+            <p class="small-text">Your annual revenue based on your future Google Score *</p> <!-- Adjusted spacing here -->
             <div class="input-row">
                 <label>Input Your Profit Margin on Extra Sales (%):</label>
                 <input type="number" id="profitMargin" value="30">
             </div>
             <div class="result-profit">
-                Additional Annual Profit: $<span id="profitIncrease">35.00</span> <br>
+                Additional Annual Profit: $<span id="profitIncrease">55.13</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
