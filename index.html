@@ -26,6 +26,7 @@
             text-align: center;
         }
 
+        /* Styling for the hyperlink */
         .made-by {
             text-align: center;
             font-size: 1em;
@@ -111,6 +112,7 @@
             text-align: center;
         }
 
+        /* Small-text styling */
         .small-text {
             font-size: 0.8em;
             color: #cccccc;
@@ -120,6 +122,7 @@
             line-height: 1.1;
         }
 
+        /* Alignment and sizing adjustments */
         .aligned-input-row {
             display: flex;
             justify-content: space-between;
@@ -132,6 +135,7 @@
             margin-left: 10px;
             padding: 10px;
         }
+
     </style>
 </head>
 
@@ -178,7 +182,7 @@
         </div>
 
         <!-- Display Current Google Score -->
-        <h3>Your Current Google Score: <span id="currentScore">NaN</span></h3>
+        <h3>Your Current Google Score: <span id="currentScore">3.0</span></h3>
 
         <!-- Input the Number of Reviews You Wish to Remove -->
         <h3 class="section-header">Input the Number of Reviews You Wish to Remove</h3>
@@ -215,7 +219,7 @@
 
         <!-- Score After Removals Section -->
         <div class="result result-score">
-            Your Score After Removals: <span id="afterRemovals">NaN</span>
+            Your Score After Removals: <span id="afterRemovals">3.7</span>
         </div>
 
         <!-- Toggle Section for Revenue -->
@@ -226,7 +230,7 @@
                 <input type="number" id="annualRevenue" value="">
             </div>
             <div class="result-revenue">
-                Increase in Your Revenue: $<span id="revenueIncrease">NaN</span> <br>
+                Increase in Your Revenue: $<span id="revenueIncrease">101.82</span> <br>
                 Based on your future Google Score *
             </div>
         </div>
@@ -236,7 +240,7 @@
         <div id="profit-section" class="hidden">
             <div class="aligned-input-row">
                 <label>Your Future Annual Revenue ($):</label>
-                <input type="number" id="futureRevenue" readonly>
+                <input type="number" id="futureRevenue" value="" readonly>
             </div>
             <p class="small-text">Your annual revenue based on your future Google Score *</p>
             <div class="aligned-input-row">
@@ -244,7 +248,7 @@
                 <input type="number" id="profitMargin" value="">
             </div>
             <div class="result-profit">
-                Additional Annual Profit: $<span id="profitIncrease">NaN</span> <br>
+                Additional Annual Profit: $<span id="profitIncrease">20.36</span> <br>
                 Your Net Profit on Additional New Sales
             </div>
         </div>
@@ -264,7 +268,7 @@
             document.querySelectorAll('.increment-button').forEach(button => {
                 button.addEventListener('click', () => {
                     const target = document.getElementById(button.getAttribute('data-target'));
-                    target.value = parseInt(target.value) + 1;
+                    target.value = parseInt(target.value) + 1 || 1;
                     calculateScores();
                 });
             });
@@ -300,7 +304,7 @@
                 const totalReviews = reviews5 + reviews4 + reviews3 + reviews2 + reviews1;
                 const weightedScore = totalReviews ? (reviews5 * 5 + reviews4 * 4 + reviews3 * 3 + reviews2 * 2 + reviews1) / totalReviews : NaN;
 
-                document.getElementById('currentScore').innerText = weightedScore.toFixed(1);
+                document.getElementById('currentScore').innerText = isNaN(weightedScore) ? "NaN" : weightedScore.toFixed(1);
 
                 const remove5 = parseInt(document.getElementById('remove5').value) || 0;
                 const remove4 = parseInt(document.getElementById('remove4').value) || 0;
@@ -317,7 +321,7 @@
                 const remainingTotalReviews = remainingReviews5 + remainingReviews4 + remainingReviews3 + remainingReviews2 + remainingReviews1;
                 const newWeightedScore = remainingTotalReviews ? (remainingReviews5 * 5 + remainingReviews4 * 4 + remainingReviews3 * 3 + remainingReviews2 * 2 + remainingReviews1) / remainingTotalReviews : NaN;
 
-                document.getElementById('afterRemovals').innerText = newWeightedScore.toFixed(1);
+                document.getElementById('afterRemovals').innerText = isNaN(newWeightedScore) ? "NaN" : newWeightedScore.toFixed(1);
 
                 // Calculate Revenue Increase
                 calculateRevenueIncrease(weightedScore, newWeightedScore);
@@ -330,23 +334,23 @@
 
                 const revenueIncrease = currentRevenue * (scoreDifference * 0.07);
 
-                document.getElementById('revenueIncrease').innerText = revenueIncrease.toFixed(2);
+                document.getElementById('revenueIncrease').innerText = isNaN(revenueIncrease) ? "NaN" : revenueIncrease.toFixed(2);
 
                 // Automatically update Future Annual Revenue
                 const futureRevenue = currentRevenue + revenueIncrease;
-                document.getElementById('futureRevenue').value = futureRevenue.toFixed(2);
+                document.getElementById('futureRevenue').value = isNaN(futureRevenue) ? "" : futureRevenue.toFixed(2);
 
                 calculateProfit();
             }
 
             // Profit Calculation based on Profit Margin
             function calculateProfit() {
-                const profitMargin = parseFloat(document.getElementById('profitMargin').value) / 100;
-                const revenueIncrease = parseFloat(document.getElementById('revenueIncrease').innerText);
+                const profitMargin = parseFloat(document.getElementById('profitMargin').value) / 100 || 0;
+                const revenueIncrease = parseFloat(document.getElementById('revenueIncrease').innerText) || 0;
 
                 const additionalProfit = revenueIncrease * profitMargin;
 
-                document.getElementById('profitIncrease').innerText = additionalProfit.toFixed(2);
+                document.getElementById('profitIncrease').innerText = isNaN(additionalProfit) ? "NaN" : additionalProfit.toFixed(2);
             }
 
             calculateScores();
